@@ -2,7 +2,6 @@ package seleniumIntroduction;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
