@@ -6,23 +6,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
-public class CheckBox {
+public class CheckboxAsserting {
 
 	public static void main(String[] args) {
 
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 		WebElement familyCheckbox = driver.findElement(By.cssSelector("input[id*='friendsandfamily']"));
-		System.out.println("Before : "+familyCheckbox.isSelected()); 
+		Assert.assertFalse(familyCheckbox.isSelected());
 		familyCheckbox.click();
-		System.out.println("After : "+familyCheckbox.isSelected()); 
+		Assert.assertTrue(familyCheckbox.isSelected());
 		
+		WebElement seniorCitizenCheckbox = driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']"));
+		seniorCitizenCheckbox.click();
+		Assert.assertTrue(seniorCitizenCheckbox.isSelected());
 		
 		
 		List<WebElement> checkBoxes = driver.findElements(By.cssSelector("div[id='discount-checkbox'] input[type='checkbox']"));
-		System.out.println("no.of.checkboxes : "+checkBoxes.size());
-		
+		Assert.assertEquals( 5 , checkBoxes.size());
+		driver.quit();
 	}
 
 }
